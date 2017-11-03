@@ -2,55 +2,21 @@
 
 import * as vscode from "vscode";
 import * as path from "path";
+import * as toggler from "./toggler";
+import * as terminal from "./terminal";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log(
-    'Congratulations, your extension "rails-test-helper" is now active!'
-  );
-
-  let disposable = vscode.commands.registerCommand(
+  let toggleCommand = vscode.commands.registerCommand(
     "extension.railsTestHelper.toggle",
-    () => {
-      // Get the current editor
-      const activeEditor = vscode.window.activeTextEditor;
-
-      // Abort if there is no editor available
-      if (!activeEditor) {
-        return vscode.window.showErrorMessage(
-          "No file selected. Select either a code file or a test file."
-        );
-      }
-
-      const currentFile = activeEditor.document.fileName;
-      const reRubyFile = /\.rb$/;
-      const reFileType = /_test\.rb$/;
-
-      // Only works with Ruby files
-      if (!reRubyFile.test(currentFile)) {
-        return vscode.window.showErrorMessage(
-          "Hrm. That doesn't seem to be a Ruby file."
-        );
-      }
-
-      // Substitute
-      const targetFile = reFileType.test(currentFile)
-        ? currentFile.replace(/_test\.rb$/, ".rb").replace(/\/test\//, "/app/")
-        : currentFile.replace(/\.rb$/, "_test.rb").replace(/\/app\//, "/test/");
-
-      // Open target file
-      return vscode.workspace
-        .openTextDocument(targetFile)
-        .then(
-          document => vscode.window.showTextDocument(document),
-          () =>
-            vscode.window.showErrorMessage(
-              `Target file ${targetFile} does not seem to exist.`
-            )
-        );
-    }
+    () => toggler.toggle()
+  );
+  let runTestCommand = vscode.commands.registerCommand(
+    "extension.railsTestHelper.runTest",
+    () => terminal.runTest()
   );
 
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(toggleCommand);
+  context.subscriptions.push(runTestCommand);
 }
 
 // this method is called when your extension is deactivated
