@@ -1,7 +1,14 @@
 # Change Log
-All notable changes to the "rails-test-helper" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+All notable changes to the "vscode-rails-test-helper" extension will be documented in this file.
 
-## [Unreleased]
-- Initial release
+## [0.2.0]
+### Added
+- Support for running tests by line number in the terminal.
+
+## [0.1.0]
+### Added
+- Initial release, includes test/implementation toggler.
+
+
+_[Keep a Changelog](http://keepachangelog.com/) recommendations are used to structure this file._

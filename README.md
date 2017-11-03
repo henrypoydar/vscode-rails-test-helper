@@ -12,10 +12,16 @@ This is an extension for Visual Code Studio. It contains a couple of utilities t
 * `cmd + .` (Commmand + dot on the Mac)
 * `ctrl + .` (Control + dot)  
 
+Command for re-mapping: `extension.railsTestHelper.toggle`
+
 ### Run a test: 
 
 * `shift + cmd + r` (Commmand + shift + r on the Mac)
 * `shift + ctrl + r` (Control + shift + r)  
+
+Command for re-mapping: `extension.railsTestHelper.runTest`
+
+Tests will run at the current line number unless you're at the top of the file (first 3 lines), in which case all the tests in the file will be run.
 
 ## Known Issues
 
@@ -23,13 +29,3 @@ This is an extension for Visual Code Studio. It contains a couple of utilities t
 * Does not work with RSpec (yet)
 * Assumes spring to run tests via bundle exec
 * No logic for split views
-
-## Release Notes
-
-### 0.1.0
-
-Initial release of rails-test-helper 
-
-### 0.2.0
-
-Add test run command
