@@ -25,7 +25,9 @@ Tests will run at the current line number unless you're at the top of the file (
 
 ## Known Issues
 
-* Assumes Rails conventions and directory structure
-* Does not work with RSpec (yet)
-* Assumes spring to run tests via bundle exec
+* Assumes Rails conventions and directory structure - the toggles are between a parallel mapping of the `./app` and `./test` directory. For JS tests of webpacker packs, this means `/app/javascript/packs` tests are located in `/test/javascript/packs`
+* Doesn't work with Rspec yet
+* Assumes spring to run tests via `bundle exec spring test`
+* Assumes `yarn test` for running any JS unit tests
+* Assumes JS tests are named in the `file.test.js` format and Ruby tests in the `file_test.rb` format
 * No logic for split views

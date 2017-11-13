@@ -15,13 +15,14 @@ export function runTest() {
     );
   }
 
-  const reFileType = /_test\.rb$/;
   const currentFile = activeEditor.document.fileName;
 
-  // Only works with Ruby test files
-  if (!reFileType.test(currentFile)) {
+  const reValidFile = /(_|\.)test\.(rb|js)$/;
+
+  // Only works with Ruby or JS test files
+  if (!reValidFile.test(currentFile)) {
     return vscode.window.showErrorMessage(
-      "Hrm. That doesn't seem to be a Ruby test file."
+      "Hrm. That doesn't seem to be a Ruby or Javascript test file."
     );
   }
 
@@ -30,10 +31,12 @@ export function runTest() {
 
   // Get the line number, assemble the command
   let currentPosition: vscode.Position = activeEditor.selection.active;
+  const reRubyFile = /\.rb$/;
   const lineNumber = currentPosition.line + 1;
   const suffix = lineNumber > 3 ? `:${lineNumber}` : "";
-  const commandText = `bundle exec spring rails test ${activeEditor.document
-    .fileName}${suffix}`;
+  const commandText = reRubyFile.test(currentFile) ? 
+    `bundle exec spring rails test ${currentFile}${suffix}` : 
+    `yarn test ${currentFile}`;
 
   // Run the command
   vscode.commands.executeCommand("workbench.action.terminal.clear");

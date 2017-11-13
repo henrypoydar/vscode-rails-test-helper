@@ -2,7 +2,7 @@
   "name": "rails-test-helper",
   "displayName": "Rails Test Helper",
   "description": "Utilities to help with TDD in Ruby on Rails applications",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "henrypoydar",
   "repository": {
     "type": "git",

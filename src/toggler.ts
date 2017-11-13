@@ -3,7 +3,6 @@
 import * as vscode from "vscode";
 
 export function toggle() {
-
   // Get the current editor
   const activeEditor = vscode.window.activeTextEditor;
 
@@ -15,20 +14,26 @@ export function toggle() {
   }
 
   const currentFile = activeEditor.document.fileName;
+  const reValidFile = /\.(rb|js)$/;
+  const reTestFile = /(_|\.)test\.(rb|js)$/;
   const reRubyFile = /\.rb$/;
-  const reFileType = /_test\.rb$/;
 
-  // Only works with Ruby files
-  if (!reRubyFile.test(currentFile)) {
+  // Only works with Ruby or Javascript files
+  if (!reValidFile.test(currentFile)) {
     return vscode.window.showErrorMessage(
-      "Hrm. That doesn't seem to be a Ruby file."
+      "Hrm. That doesn't seem to be a Ruby or Javascript file."
     );
   }
 
   // Substitute
-  const targetFile = reFileType.test(currentFile)
-    ? currentFile.replace(/_test\.rb$/, ".rb").replace(/\/test\//, "/app/")
-    : currentFile.replace(/\.rb$/, "_test.rb").replace(/\/app\//, "/test/");
+  const extConvention = reRubyFile.test(currentFile) ? "_test" : ".test";
+  const targetFile = reTestFile.test(currentFile)
+    ? currentFile
+        .replace(/(_|\.)test\.(rb|js)$/, ".$2")
+        .replace(/\/test\//, "/app/")
+    : currentFile
+        .replace(/\.(rb|js)$/, `${extConvention}.$1`)
+        .replace(/\/app\//, "/test/");
 
   // Open target file
   return vscode.workspace
