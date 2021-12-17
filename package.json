@@ -12,7 +12,9 @@
   "engines": {
     "vscode": "^1.17.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onCommand:extension.railsTestHelper.toggle",
     "onCommand:extension.railsTestHelper.runTest"
@@ -50,9 +52,9 @@
     "test": "npm run compile && node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
-    "typescript": "^2.5.3",
-    "vscode": "^1.1.5",
+    "@types/mocha": "^2.2.42",
     "@types/node": "^7.0.43",
-    "@types/mocha": "^2.2.42"
+    "typescript": "^2.5.3",
+    "vscode": "0.9.9"
   }
 }
