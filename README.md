@@ -23,6 +23,17 @@ Command for re-mapping: `extension.railsTestHelper.runTest`
 
 Tests will run at the current line number unless you're at the top of the file (first 3 lines), in which case all the tests in the file will be run.
 
+## Installation
+
+Use the `Install from VSIX` command in VS Code and select the `.vsix` file
+
+
+## Development
+
+* See the `vsc-extension-quickstart.md` documentation
+* Test with `npm run test`
+* Package with `vsce package`; install `vsce` package globally with npm
+
 ## TODO/Known Issues
 
 * Assumes Rails conventions and directory structure - the toggles are between a parallel mapping of the `./app` and `./test` directory.
