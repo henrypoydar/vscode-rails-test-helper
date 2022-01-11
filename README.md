@@ -27,7 +27,7 @@ Tests will run at the current line number unless you're at the top of the file (
 
 * Assumes Rails conventions and directory structure - the toggles are between a parallel mapping of the `./app` and `./test` directory.
 * Doesn't work with Rspec
-* Assumes spring to run tests via `bundle exec rails test`, make this configurable with a default
+* Assumes tests are run via `bundle exec rails test`, make this configurable with a default
 * Assumes `yarn test` for running any JS unit tests, make this configurable with a default
 * Assumes JS tests are named in the `file.test.js` format and Ruby tests in the `file_test.rb` format
 * No logic for split views
