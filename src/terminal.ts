@@ -34,8 +34,8 @@ export function runTest() {
   const reRubyFile = /\.rb$/;
   const lineNumber = currentPosition.line + 1;
   const suffix = lineNumber > 3 ? `:${lineNumber}` : "";
-  const commandText = reRubyFile.test(currentFile) ? 
-    `bundle exec spring rails test ${currentFile}${suffix}` : 
+  const commandText = reRubyFile.test(currentFile) ?
+    `bundle exec rails test ${currentFile}${suffix}` :
     `yarn test ${currentFile}`;
 
   // Run the command
